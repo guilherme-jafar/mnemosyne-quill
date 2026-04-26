@@ -3,6 +3,7 @@
 :root {
   // Typography
   --font-body: #{$font-body};
+  --font-heading: #{$font-heading};
   --font-mono: #{$font-mono};
   --font-size-base: 1rem;
   --font-size-sm: 0.875rem;
@@ -22,6 +23,19 @@
   --color-error: #e05252;
   --shadow-sidebar: 2px 0 8px rgba(0, 0, 0, 0.08);
 
+  // Heading colours
+  --color-h1: #6d28d9;
+  --color-h2: #5b21b6;
+  --color-h3: #4c1d95;
+  --color-h4: #6b4fa0;
+  --color-h5: #8b8b8b;
+
+  // Content
+  --color-text-bold: #1a1a1a;
+
+  // Radii
+  --radius-sm: 3px;
+
   // Layout
   --sidebar-width: 280px;
 }
@@ -39,6 +53,12 @@
   --color-success: #4ade80;
   --color-error: #f87171;
   --shadow-sidebar: 2px 0 8px rgba(0, 0, 0, 0.4);
+  --color-h1: #a78bfa;
+  --color-h2: #c4b5fd;
+  --color-h3: #ddd6fe;
+  --color-h4: #ede9fe;
+  --color-h5: #a0a0a0;
+  --color-text-bold: #ffffff;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -55,6 +75,12 @@
     --color-success: #4ade80;
     --color-error: #f87171;
     --shadow-sidebar: 2px 0 8px rgba(0, 0, 0, 0.4);
+    --color-h1: #a78bfa;
+    --color-h2: #c4b5fd;
+    --color-h3: #ddd6fe;
+    --color-h4: #ede9fe;
+    --color-h5: #a0a0a0;
+    --color-text-bold: #ffffff;
   }
 }
 

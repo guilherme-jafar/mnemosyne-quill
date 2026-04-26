@@ -13,6 +13,7 @@
   "dependencies": {
     "@fontsource/inter": "^5.2.8",
     "@fontsource/jetbrains-mono": "^5.2.8",
+    "@fontsource/playfair-display": "^5.2.8",
     "@milkdown/core": "^7.20.0",
     "@milkdown/crepe": "^7.20.0",
     "@milkdown/kit": "^7.20.0",
