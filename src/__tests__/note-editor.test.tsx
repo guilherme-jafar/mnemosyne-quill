@@ -26,6 +26,7 @@ vi.mock("@milkdown/crepe", () => ({
 vi.mock("@milkdown/kit/utils", () => ({
   getMarkdown: vi.fn(() => () => "# Hello"),
   replaceAll: vi.fn(() => () => undefined),
+  $prose: vi.fn(() => ({})),
 }));
 
 const mockSaveNote = vi.fn();

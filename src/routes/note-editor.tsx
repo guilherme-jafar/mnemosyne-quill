@@ -9,6 +9,7 @@ import styles from "./note-editor.module.scss";
 import { Crepe } from '@milkdown/crepe'
 import "@milkdown/crepe/theme/common/style.css";
 import "@milkdown/crepe/theme/frame-dark.css";
+import { calloutPlugin } from "../utils/callout-plugin";
 
 type SaveStatus = "idle" | "saving" | "saved" | "error";
 
@@ -46,6 +47,7 @@ const CrepeEditor: React.FC<EditorInnerProps> = ({
       root,
       defaultValue: initialContent,
     });
+    crepe.editor.use(calloutPlugin);
     return crepe;
   }, []);
 

@@ -85,6 +85,21 @@
 
   :global(.milkdown .ProseMirror) {
     padding: 0 !important;
+
+    blockquote {
+      &::before {
+        left: 0px;
+        top: 0px;
+        bottom: 0px;
+        width: 3px;
+        background: var(--_callout-color);
+        border-radius: 0 100px 100px 0;
+      }
+    }
+
+    p {
+      margin-bottom: 0;
+    }
   }
 
   :global(.ProseMirror) {
@@ -108,11 +123,30 @@
       line-height: 1.3;
     }
 
-    h1 { font-size: 2rem;   color: var(--color-h1); }
-    h2 { font-size: 1.5rem; color: var(--color-h2); }
-    h3 { font-size: 1.25rem; color: var(--color-h3); }
-    h4 { font-size: 1.1rem;  color: var(--color-h4); }
-    h5 { font-size: 1rem;    color: var(--color-h5); }
+    h1 {
+      font-size: 2rem;
+      color: var(--color-h1);
+    }
+
+    h2 {
+      font-size: 1.5rem;
+      color: var(--color-h2);
+    }
+
+    h3 {
+      font-size: 1.25rem;
+      color: var(--color-h3);
+    }
+
+    h4 {
+      font-size: 1.1rem;
+      color: var(--color-h4);
+    }
+
+    h5 {
+      font-size: 1rem;
+      color: var(--color-h5);
+    }
 
     strong {
       color: var(--color-text-bold);
@@ -148,6 +182,107 @@
       margin-bottom: $space-4;
     }
 
+    blockquote[data-callout] {
+      border: 1px solid color-mix(in srgb, var(--_callout-color) 35%, transparent);
+      padding: $space-3 $space-4;
+      color: var(--color-text);
+      margin-bottom: $space-4;
+      background-color: color-mix(in srgb, var(--_callout-color) 10%, transparent);
+
+      >p:first-child {
+        color: var(--_callout-color);
+        font-weight: 600;
+        margin-bottom: $space-2;
+
+        &::before {
+          content: '';
+          display: inline-block;
+          width: 1em;
+          height: 1em;
+          margin-right: 0.35em;
+          vertical-align: -0.125em;
+          background-color: var(--_callout-color);
+          mask-image: var(--_callout-icon);
+          -webkit-mask-image: var(--_callout-icon);
+          mask-size: contain;
+          -webkit-mask-size: contain;
+          mask-repeat: no-repeat;
+          -webkit-mask-repeat: no-repeat;
+          mask-position: center;
+          -webkit-mask-position: center;
+        }
+      }
+
+      >p:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    blockquote[data-callout="note"] {
+      --_callout-color: var(--callout-note);
+      --_callout-icon: var(--callout-icon-note);
+    }
+
+    blockquote[data-callout="abstract"] {
+      --_callout-color: var(--callout-abstract);
+      --_callout-icon: var(--callout-icon-abstract);
+    }
+
+    blockquote[data-callout="info"] {
+      --_callout-color: var(--callout-info);
+      --_callout-icon: var(--callout-icon-info);
+    }
+
+    blockquote[data-callout="todo"] {
+      --_callout-color: var(--callout-todo);
+      --_callout-icon: var(--callout-icon-todo);
+    }
+
+    blockquote[data-callout="tip"] {
+      --_callout-color: var(--callout-tip);
+      --_callout-icon: var(--callout-icon-tip);
+    }
+
+    blockquote[data-callout="success"] {
+      --_callout-color: var(--callout-success);
+      --_callout-icon: var(--callout-icon-success);
+    }
+
+    blockquote[data-callout="question"] {
+      --_callout-color: var(--callout-question);
+      --_callout-icon: var(--callout-icon-question);
+    }
+
+    blockquote[data-callout="warning"] {
+      --_callout-color: var(--callout-warning);
+      --_callout-icon: var(--callout-icon-warning);
+    }
+
+    blockquote[data-callout="failure"] {
+      --_callout-color: var(--callout-failure);
+      --_callout-icon: var(--callout-icon-failure);
+    }
+
+    blockquote[data-callout="danger"] {
+      --_callout-color: var(--callout-danger);
+      --_callout-icon: var(--callout-icon-danger);
+    }
+
+    blockquote[data-callout="bug"] {
+      --_callout-color: var(--callout-bug);
+      --_callout-icon: var(--callout-icon-bug);
+    }
+
+    blockquote[data-callout="example"] {
+      --_callout-color: var(--callout-example);
+      --_callout-icon: var(--callout-icon-example);
+    }
+
+    blockquote[data-callout="quote"] {
+      --_callout-color: var(--callout-quote);
+      --_callout-icon: var(--callout-icon-quote);
+    }
+
     ul,
     ol {
       padding-left: $space-6;
@@ -162,25 +297,25 @@
 }
 
 :global {
-  .milkdown .label-wrapper .unchecked,
-  .milkdown .label-wrapper .checked {
-    display: inline-block;
-    flex-shrink: 0;
-    width: 15px;
-    height: 15px;
-    border: 1.5px solid var(--color-border);
-    border-radius: var(--radius-sm);
-    cursor: pointer;
-    transition: background-color 150ms ease, border-color 150ms ease;
-    background-color: transparent;
 
-    svg { display: none; }
-  }
+  //.milkdown .label-wrapper .unchecked,
+  //.milkdown .label-wrapper .checked {
+  //  display: inline-block;
+   // flex-shrink: 0;
+   // width: 15px;
+    //height: 15px;
+    //border: 1.5px solid var(--color-border);
+    //border-radius: var(--radius-sm);
+    //cursor: pointer;
+    //transition: background-color 150ms ease, border-color 150ms ease;
+    //background-color: transparent;
+
+    //svg {
+      //display: none;
+    //}
+  //}
 
   .milkdown .label-wrapper .checked {
-    background-color: var(--color-accent);
-    border-color: var(--color-accent);
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 8'%3E%3Cpath d='M1 4l3 3 5-6' stroke='%23fff' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
     background-position: center;
     background-size: 10px 8px;
@@ -204,4 +339,3 @@
   color: var(--color-text-muted);
   font-size: 0.95rem;
 }
-
