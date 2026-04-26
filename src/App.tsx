@@ -4,6 +4,7 @@ import { AdapterProvider } from "./context/adapter-context";
 import { stubAdapter } from "./adapters/stub-adapter";
 import { Home } from "./routes/home";
 import { Notes } from "./routes/notes";
+import { NoteEditor } from "./routes/note-editor";
 
 export const App = (): React.JSX.Element => (
   <AdapterProvider value={stubAdapter}>
@@ -11,7 +12,7 @@ export const App = (): React.JSX.Element => (
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/notes" element={<Notes />}>
-          <Route path="*" element={<></>} />
+          <Route path="*" element={<NoteEditor />} />
         </Route>
       </Routes>
     </BrowserRouter>
