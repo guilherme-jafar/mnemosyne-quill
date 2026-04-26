@@ -1,0 +1,50 @@
+@use "../../styles/variables" as *;
+
+.toc {
+  padding: $space-4 $space-4 $space-4 $space-3;
+}
+
+.label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  margin-bottom: $space-3;
+}
+
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: $space-1;
+}
+
+.item {
+  padding-left: 0;
+
+  &[data-level="2"] {
+    padding-left: $space-3;
+  }
+
+  &[data-level="3"] {
+    padding-left: $space-6;
+  }
+}
+
+.link {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  text-decoration: none;
+  line-height: 1.4;
+  display: block;
+  padding: 2px 0;
+  transition: color 120ms ease;
+
+  &:hover {
+    color: var(--color-accent);
+    text-decoration: none;
+  }
+}

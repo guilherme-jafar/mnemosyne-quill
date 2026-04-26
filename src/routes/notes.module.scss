@@ -4,17 +4,32 @@
   display: flex;
   height: 100vh;
   overflow: hidden;
+  position: relative;
 }
 
-// Sidebar
+// ── Sidebar ───────────────────────────────────────────────────────────────────
+
 .sidebar {
   width: $sidebar-width;
   flex-shrink: 0;
-  border-right: 1px solid var(--color-border);
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  background-color: var(--color-bg);
+
+  @media #{$mobile} {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    z-index: 200;
+    transform: translateX(-100%);
+    transition: transform 200ms ease;
+    box-shadow: var(--shadow-sidebar);
+
+    &.open {
+      transform: translateX(0);
+    }
+  }
 }
 
 .sidebarHeader {
@@ -22,7 +37,6 @@
   align-items: center;
   justify-content: space-between;
   padding: $space-4;
-  border-bottom: 1px solid var(--color-border);
   flex-shrink: 0;
 }
 
@@ -40,14 +54,43 @@
   padding: $space-3 $space-2;
 }
 
-// Content area
+.sidebarFooter {
+  flex-shrink: 0;
+  padding: $space-3 $space-4;
+}
+
+.settingsLink {
+  display: flex;
+  align-items: center;
+  gap: $space-2;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  text-decoration: none;
+
+  &:hover {
+    color: var(--color-accent);
+    text-decoration: none;
+  }
+}
+
+// ── Center column ─────────────────────────────────────────────────────────────
+
+.centerColumn {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
 .content {
   flex: 1;
   overflow-y: auto;
   min-width: 0;
 }
 
-// States
+// ── States ────────────────────────────────────────────────────────────────────
+
 .stateContainer {
   display: flex;
   flex-direction: column;
@@ -67,14 +110,15 @@
 }
 
 .errorMessage {
-  color: #e05252;
+  color: var(--color-error);
   font-size: 0.9rem;
   max-width: 320px;
 }
 
-// Loading skeleton
+// ── Loading skeleton ──────────────────────────────────────────────────────────
+
 .skeleton {
-  padding: $space-2 $space-2;
+  padding: $space-2;
 
   .skeletonLine {
     height: 0.75rem;
@@ -94,26 +138,19 @@
       width: 60%;
     }
 
-    &.short {
-      width: 40%;
-    }
-
-    &.medium {
-      width: 70%;
-    }
-
-    &.long {
-      width: 85%;
-    }
+    &.short { width: 40%; }
+    &.medium { width: 70%; }
+    &.long { width: 85%; }
   }
 }
 
 @keyframes shimmer {
-  0% { background-position: 200% 0; }
+  0%   { background-position: 200% 0; }
   100% { background-position: -200% 0; }
 }
 
-// Mobile hamburger
+// ── Hamburger ─────────────────────────────────────────────────────────────────
+
 .hamburger {
   display: none;
   background: transparent;
@@ -126,9 +163,18 @@
   &:hover {
     color: var(--color-accent);
   }
+
+  @media #{$mobile} {
+    display: flex;
+  }
 }
 
-// No note selected placeholder
+.hamburgerOpen {
+  margin: $space-4;
+}
+
+// ── Placeholder ───────────────────────────────────────────────────────────────
+
 .placeholder {
   display: flex;
   align-items: center;
@@ -138,27 +184,16 @@
   font-size: 0.95rem;
 }
 
-@media all and ($mobile) {
-  .layout {
-    position: relative;
-  }
+// ── Mobile overlay ────────────────────────────────────────────────────────────
 
-  .hamburger {
-    display: flex;
-  }
+.overlay {
+  display: none;
 
-  .sidebar {
+  @media #{$mobile} {
+    display: block;
     position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    z-index: 100;
-    transform: translateX(-100%);
-    transition: transform 200ms ease;
-    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.12);
-
-    &.open {
-      transform: translateX(0);
-    }
+    inset: 0;
+    z-index: 199;
+    background: rgba(0, 0, 0, 0.4);
   }
 }

@@ -104,7 +104,7 @@ type FolderTreeProps = {
 
 export const FolderTree = ({ notes }: FolderTreeProps): React.JSX.Element => {
   const location = useLocation();
-  const selectedPath = location.pathname.replace(/^\/notes\//, "");
+  const selectedPath = decodeURIComponent(location.pathname.replace(/^\/notes\//, ""));
 
   const root = buildTrie(notes);
   const allFolderPaths = root.getFolderPaths();

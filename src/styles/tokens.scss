@@ -8,30 +8,53 @@
   --font-size-sm: 0.875rem;
   --line-height-body: 1.6;
 
-  // Colours — light mode (Quartz-inspired)
+  // Colours — light mode
   --color-bg: #faf8f8;
   --color-bg-secondary: #f0eded;
+  --color-bg-hover: #e8e4e4;
   --color-text: #2d2d2d;
   --color-text-muted: #8b8b8b;
   --color-border: #e0dede;
-  --color-accent: #8b5cf6;
-  --color-accent-hover: #7c3aed;
-  --color-link: #8b5cf6;
+  --color-accent: #a78bfa;
+  --color-accent-hover: #8b5cf6;
+  --color-link: #a78bfa;
+  --color-success: #22c55e;
+  --color-error: #e05252;
+  --shadow-sidebar: 2px 0 8px rgba(0, 0, 0, 0.08);
 
-  // Sidebar
+  // Layout
   --sidebar-width: 280px;
 }
 
+:root[data-theme="dark"] {
+  --color-bg: #1a1a1a;
+  --color-bg-secondary: #242424;
+  --color-bg-hover: #2e2e2e;
+  --color-text: #e8e8e8;
+  --color-text-muted: #888;
+  --color-border: #333;
+  --color-accent: #a78bfa;
+  --color-accent-hover: #8b5cf6;
+  --color-link: #a78bfa;
+  --color-success: #4ade80;
+  --color-error: #f87171;
+  --shadow-sidebar: 2px 0 8px rgba(0, 0, 0, 0.4);
+}
+
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme="light"]) {
     --color-bg: #1a1a1a;
     --color-bg-secondary: #242424;
+    --color-bg-hover: #2e2e2e;
     --color-text: #e8e8e8;
     --color-text-muted: #888;
     --color-border: #333;
     --color-accent: #a78bfa;
     --color-accent-hover: #8b5cf6;
     --color-link: #a78bfa;
+    --color-success: #4ade80;
+    --color-error: #f87171;
+    --shadow-sidebar: 2px 0 8px rgba(0, 0, 0, 0.4);
   }
 }
 

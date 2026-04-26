@@ -5,6 +5,8 @@ import userEvent from "@testing-library/user-event";
 import { MemoryRouter, Route, Routes } from "react-router-dom";
 import type { StorageAdapter } from "../adapters/storage-adapter";
 import { AdapterProvider } from "../context/adapter-context";
+import { HeadingsProvider } from "../context/headings-context";
+import { NotesRefreshProvider } from "../context/notes-refresh-context";
 import { NoteEditor } from "../routes/note-editor";
 
 // Milkdown cannot run in jsdom — mock all three packages at the module boundary.
@@ -39,11 +41,15 @@ const mockAdapter: StorageAdapter = {
 function renderEditor(path = "notes/my-note.md"): ReturnType<typeof render> {
   return render(
     <AdapterProvider value={mockAdapter}>
-      <MemoryRouter initialEntries={[`/notes/${path}`]}>
-        <Routes>
-          <Route path="/notes/*" element={<NoteEditor />} />
-        </Routes>
-      </MemoryRouter>
+      <NotesRefreshProvider>
+        <HeadingsProvider>
+          <MemoryRouter initialEntries={[`/notes/${path}`]}>
+            <Routes>
+              <Route path="/notes/*" element={<NoteEditor />} />
+            </Routes>
+          </MemoryRouter>
+        </HeadingsProvider>
+      </NotesRefreshProvider>
     </AdapterProvider>
   );
 }
