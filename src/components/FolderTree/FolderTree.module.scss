@@ -1,0 +1,124 @@
+@use "../../styles/variables" as *;
+
+.explorer {
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  height: 100%;
+}
+
+.explorerList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+// Folder items
+.folderItem {
+  list-style: none;
+}
+
+.folderContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  user-select: none;
+}
+
+.folderToggle {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0.2rem 0.4rem;
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: $semi-bold-weight;
+  line-height: 1.5rem;
+  text-align: left;
+  width: 100%;
+  border-radius: 4px;
+
+  &:hover {
+    color: var(--color-accent);
+  }
+
+  span {
+    pointer-events: none;
+    color: var(--color-text);
+  }
+}
+
+.folderIcon {
+  flex-shrink: 0;
+  transition: transform 0.25s ease;
+  color: var(--color-text-muted);
+  transform: rotate(0deg);
+
+  &.open {
+    transform: rotate(90deg);
+  }
+}
+
+// Animated folder children (CSS grid trick from Quartz)
+.folderOuter {
+  visibility: collapse;
+  display: grid;
+  grid-template-rows: 0fr;
+  transition:
+    grid-template-rows 0.25s ease-in-out,
+    visibility 0.25s ease-in-out;
+
+  &.open {
+    visibility: visible;
+    grid-template-rows: 1fr;
+  }
+
+  > ul {
+    overflow: hidden;
+    margin-left: 6px;
+    padding-left: 0.8rem;
+    border-left: 1px solid var(--color-border);
+    list-style: none;
+  }
+}
+
+.folderChildren {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+// File items
+.fileItem {
+  list-style: none;
+}
+
+.fileLink {
+  display: block;
+  padding: 0.2rem 0.4rem;
+  font-size: 0.9rem;
+  color: var(--color-text);
+  opacity: 0.8;
+  border-radius: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-decoration: none;
+  line-height: 1.5rem;
+
+  &:hover {
+    opacity: 1;
+    color: var(--color-accent);
+    text-decoration: none;
+  }
+
+  &.active {
+    opacity: 1;
+    color: var(--color-accent);
+    background-color: var(--color-bg-secondary);
+  }
+}
