@@ -51,7 +51,7 @@ export const calloutPlugin = $prose(() => {
           const firstChild = node.firstChild;
           if (!firstChild) return;
 
-          const text = firstChild.textContent.replace(/\n/g, "<\br>");
+          const text = firstChild.textContent.replace(/\n/g, "<br/>");
           const trimmed = text.trimStart();
           const leadingSpaces = text.length - trimmed.length;
           const match = CALLOUT_PATTERN.exec(trimmed);
